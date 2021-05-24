@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Ferdighet 9b - Valgsetninger - Sammenligne to tekster</p>
+    <div id="info"></div>
+    <p>Endre på tekstene! (Prøv også å fylle ut tall: 11, 101, 102)</p>
+    <input type="text" id="txt1" oninput="takeInput()" value="Per" /><br />
+    <input type="text" id="txt2" oninput="takeInput()" value="Pål" /><br />
+    <input type="text" id="txt3" oninput="takeInput()" value="Espen" /><br />
+    <script>
+        var infoDiv = document.getElementById('info');
+        var txtDiv1 = document.getElementById('txt1');
+        var txtDiv2 = document.getElementById('txt2');
+        var txtDiv3 = document.getElementById('txt3');
+
+        var txt1;
+        var txt2;
+        var txt3;
+
+        var comparedStringOne;
+        var comparedStringTwo;
+        var comparedStringThree;
+
+        var lowestValue;
+
+        compareInput();
+        sortInput();
+        updateFields();
+
+        function takeInput() {
+            txt1 = txtDiv1.value;
+            txt2 = txtDiv2.value;
+            txt3 = txtDiv3.value;            
+
+            compareInput();
+            sortInput();
+            updateFields()
+        }
+
+        
+        function compareInput()
+        {
+            if (txt1 == txt2) comparedStringOne = 'Tekst 1 og 2 er like<br/>';
+            if (txt1 != txt2) comparedStringOne = '<del>Tekst 1 og 2 er like</del><br/>';
+
+            if (txt1 == txt3) comparedStringTwo = 'Tekst 1 og 3 er like<br/>';
+            if (txt1 != txt3) comparedStringTwo = '<del>Tekst 1 og 3 er like</del><br/>';
+
+            if (txt3 == txt2) comparedStringThree = 'Tekst 2 og 3 er like<br/>';
+            if (txt3 != txt2) comparedStringThree = '<del>Tekst 2 og 3 er like</del><br/>';
+        }
+
+
+        function sortInput()
+        {            
+            if (txt1 <= txt2) {
+                if (txt3 <= txt1) lowestValue = txt3;
+                else lowestValue = txt1;
+            } else {
+                if (txt3 <= txt2) lowestValue = text3;
+                else lowestValue = txt2;
+            }
+        }
+
+
+        function updateFields()
+        {
+            infoDiv.innerText = '';
+            
+            infoDiv.innerHTML += comparedStringOne;
+            infoDiv.innerHTML += comparedStringTwo;
+            infoDiv.innerHTML += comparedStringThree;             
+
+            infoDiv.innerHTML += 'Om vi sorterer de tre tekstene, er denne den første:<br/>' + lowestValue;
+        }
+        
+    </script>
+</body>
+</html>
